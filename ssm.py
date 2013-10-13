@@ -134,20 +134,22 @@ Subject: %(subject)s
     status = process.close()
     if status is not None: # Errors occurs
         print "Some errors occurred while sending email. Please try again later."
+        return False
     else:
         print "Email Successfully Sent."
+        return True
 
 def main():
     args=process_args()
 
     # Send the email
-    send_email(source=args['source'],
-               destination=args['destination'],
-               subject=args['subject'],
-               message=args['message'],
-               sendmail_path=args['sendmail_path'],
-               text_file=args['file'])
-    return 0
+    success = send_email(source=args['source'],
+                         destination=args['destination'],
+                         subject=args['subject'],
+                         message=args['message'],
+                         sendmail_path=args['sendmail_path'],
+                         text_file=args['file'])
+    return success ? 0 : -1
 
 if __name__ == '__main__':
     main()
