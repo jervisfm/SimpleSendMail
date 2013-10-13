@@ -1,5 +1,4 @@
-
-Author: Jervis Muindi
+Author: Jervis Muindi  
 Date: October 2013
 
 Introduction
@@ -23,7 +22,7 @@ module should be standard on Python 2.7 and later.
 If you are on an older version of python, you can still install argparse through the PIP Python
 Package manager. From your terminal execute:
 
-$ pip install argparse
+`$ pip install argparse`
 
 How to Run
 ===========
