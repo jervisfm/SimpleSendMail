@@ -13,11 +13,17 @@ DEBUG = True
 def quick_validate_email(email):
     """Does a basic check to ensure that email is a well-formed email address.
 
+    Basic check done is to ensure that email string has an '@' symbol and something
+    for the domain (including tld) and recipient part. (<recipient>@<domain>.<tld>)
+    
+    This check is not foolproof and it's possible for invalid addresses to make it
+    through.
+
     Args:
        email: the address to check
 
     Returns:
-        True if email is probably a conformant email address."""
+        True if email is _probably_ a conformant email address."""
 
     if not email:
         return False
