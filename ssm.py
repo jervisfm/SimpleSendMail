@@ -108,7 +108,7 @@ Subject: %(subject)s
 %(body)s
 """
     message_dict = dict(source=source,
-                        destination=', '.join(destination) # compile all emails addresses to comma separated list. 
+                        destination=', '.join(destination), # compile all emails addresses to comma separated list.
                         subject=subject,
                         body=message)
     email_message = message_template % message_dict
