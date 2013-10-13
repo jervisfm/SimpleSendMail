@@ -66,7 +66,6 @@ def process_args():
     # Quit if source/destination email is invalid.
     sanity_check_emails(args['destination'] + [args['source']])
     
-
     print args
     return args
 
