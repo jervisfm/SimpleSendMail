@@ -138,10 +138,10 @@ def main():
 
     # Send the email
     send_email(source=args['source'],
-               destination=args['destination']
-               subject=args['subject']
-               message=args['message']
-               sendmail_path=args['sendmail_path']
+               destination=args['destination'],
+               subject=args['subject'],
+               message=args['message'],
+               sendmail_path=args['sendmail_path'],
                text_file=args['file'])
     return 0
 
