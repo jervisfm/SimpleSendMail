@@ -56,9 +56,11 @@ def process_args():
     parser.add_argument('--sendmail-binary', default='/usr/sbin/sendmail', help='Use specified copy of sendmail binary. Defaults to /usr/sbin/sendmail.')
     args = vars(parser.parse_args())
 
-    # Quit if destination email is invalid.
-    sanity_check_emails(args['destination'])
+    # Quit if source/destination email is invalid.
+    sanity_check_emails(args['destination'] + [args['source']])
     
+
+    print args
     return args
 
 
