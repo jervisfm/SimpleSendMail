@@ -18,8 +18,11 @@ def process_args():
     parser.add_argument('--subject', type=basestring, help='Subject of the message.')
     parser.add_argument('--message', type=basestring, help='Main Body of the message.')
     parser.add_argument('--file', type=basestring, help='Read specified text file and use that for the body of the message.') 
+    parser.add_argument('--sendmail-binary', type=basestring, default='/usr/sbin/sendmail', help='Use specified copy of sendmail binary. Defaults to /usr/sbin/sendmail.'
     args = vars(parser.parse_args())
     return args
+
+
 
 
 def main():
