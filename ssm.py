@@ -16,12 +16,22 @@ def quick_validate_email(email):
     Returns:
         True if email is probably a conformant email address."""
 
+    if not email:
+        return False
+
     # Just follow the basic structure <some.thing>@<somet.hing>.<com>
     email_regex = "[a-zA-Z0-9_+\.]+@[a-zA-Z0-9.]+.[a-zA-Z0-9.]+"
     if re.search(email_regex, email): # email matches regex
         return True
     else:
         return False
+
+def sanity_check_email(email):
+    """If email determined to be invalid, informs user and quits."""
+    if not quick_validate_email(email):
+        print 'Invalid email entered: %s' % email
+        print 'Please enter a valid email address and try again.'
+        sys.exit(-1)
 
 def process_args():
     """Process and parse the commandline arguments specified. 
@@ -37,6 +47,10 @@ def process_args():
     parser.add_argument('--file', default='', help='Read specified text file and use that for the body of the message.') 
     parser.add_argument('--sendmail-binary', default='/usr/sbin/sendmail', help='Use specified copy of sendmail binary. Defaults to /usr/sbin/sendmail.')
     args = vars(parser.parse_args())
+    
+    # Quit if destination email is invalid.
+    sanity_check_email(args['destination'])
+    
     return args
 
 def main():
