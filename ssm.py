@@ -52,7 +52,7 @@ def process_args():
     """
 
     help_epilog = ("Here is an example command:\n"
-                      " python ssm.py --source=me@yahho.com"
+                      " python ssm.py --source=me@yahoo.com"
                       " --destination firstperson@gmail.com secondperson@gmail.com"
                       " --subject 'Hello' "
                       "--message 'Hello World'") 

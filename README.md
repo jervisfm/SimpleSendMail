@@ -49,7 +49,10 @@ optional arguments:
                         Use specified copy of sendmail binary. Defaults to
                         /usr/sbin/sendmail.
 
-Here is an example command: python ssm.py --source=me@yahho.com --destination
-firstperson@gmail.com secondperson@gmail.com --subject 'Hello' --message
-'Hello World'
+Here is an example command:
+
+$ python ssm.py --source=me@yahoo.com \
+                --destination firstperson@gmail.com secondperson@gmail.com \
+                --subject 'Hello' \
+                --message 'Hello World'
 </pre>
