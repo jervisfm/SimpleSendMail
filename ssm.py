@@ -33,6 +33,14 @@ def sanity_check_email(email):
         print 'Please enter a valid email address and try again.'
         sys.exit(-1)
 
+def sanity_check_emails(emails):
+    if not emails:
+        return False
+
+    for email in emails:
+        sanity_check_email(email)
+    return True
+
 def process_args():
     """Process and parse the commandline arguments specified. 
     
@@ -41,32 +49,35 @@ def process_args():
     """
     parser = argparse.ArgumentParser(description='Simpler Interface to send mail')
     parser.add_argument('--source', required=True, help='Source of email')
-    parser.add_argument('--destination', required=True, help='Destination to email to')
+    parser.add_argument('--destination', nargs='+', required=True, help='Space separated list of destination email addresses to send email to.')
     parser.add_argument('--subject', default='', help='Subject of the message.')
     parser.add_argument('--message', default='',  help='Main Body of the message.')
     parser.add_argument('--file', default='', help='Read specified text file and use that for the body of the message.') 
     parser.add_argument('--sendmail-binary', default='/usr/sbin/sendmail', help='Use specified copy of sendmail binary. Defaults to /usr/sbin/sendmail.')
     args = vars(parser.parse_args())
-    
+
     # Quit if destination email is invalid.
-    sanity_check_email(args['destination'])
+    sanity_check_emails(args['destination'])
     
     return args
 
-def send_email(source, destination, subject, message, text_file=None)
+
+def send_email(source, destination, subject, message, sendmail_path='/usr/sbin/sendmail', text_file=None):
     """Send an email using the send mail program. 
 
     Args:
         source: Source/Sender of the email.
-        destination: Recipient of the email.
+        destination: A list of recipient(s) for the email.
         subject: Subject/Title of the email.
-        message: body content of the email
+        message: body content of the email.
+        sendmail_path: path of the send mail program to use. 
         text_file: if given, indicates that body of email should be read from text file.
 
     Returns:
         True upon success. 
     """
-    
+    pass
+
 
 def main():
     process_args()
