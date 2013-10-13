@@ -4,6 +4,7 @@ __author__ = 'Jervis Muindi'
 __date__ = 'October 2013'
 
 import argparse
+import os
 import sys
 import re
 
