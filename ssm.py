@@ -133,7 +133,7 @@ Subject: %(subject)s
     process.write(email_message)
     status = process.close()
     if status is not None: # Errors occurs
-        print "Some errors occurred while sending email. Please try again later."
+        print "Some errors occurred while sending email. Email has not been sent. Please try again later."
         return False
     else:
         print "Email Successfully Sent."
@@ -149,7 +149,10 @@ def main():
                          message=args['message'],
                          sendmail_path=args['sendmail_path'],
                          text_file=args['file'])
-    return success ? 0 : -1
+    if success:
+        return 0
+    else: # We failed.
+        return -1
 
 if __name__ == '__main__':
     main()
