@@ -114,7 +114,14 @@ Subject: %(subject)s
     email_message = message_template % message_dict
 
     # Finally send the email
-    
+    sendmail_command = "%s -t -i" % sendmail_path
+    process = os.popen(sendmail_command, "w")
+    process.write(email_message)
+    status = process.close()
+    if status is not None: # Errors occurs
+        print "Some errors occurred while sending email. Please try again later."
+    else:
+        print "Email Successfully Sent."
 
 def main():
     process_args()
