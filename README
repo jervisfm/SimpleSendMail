@@ -29,7 +29,28 @@ How to Run
 ===========
 Details on running the program are described below: 
 
+<pre>
+usage: ssm.py [-h] --source SOURCE --destination DESTINATION [DESTINATION ...]
+              [--subject SUBJECT] [--message MESSAGE] [--file FILE]
+              [--sendmail-binary SENDMAIL_BINARY]
 
+Simpler Interface to send mail
 
-Sample Run
-==========
+optional arguments:
+  -h, --help            show this help message and exit
+  --source SOURCE       Source of email
+  --destination DESTINATION [DESTINATION ...]
+                        Space separated list of destination email addresses to
+                        send email to.
+  --subject SUBJECT     Subject of the message.
+  --message MESSAGE     Main Body of the message.
+  --file FILE           Read specified text file and use that for the body of
+                        the message.
+  --sendmail-binary SENDMAIL_BINARY
+                        Use specified copy of sendmail binary. Defaults to
+                        /usr/sbin/sendmail.
+
+Here is an example command: python ssm.py --source=me@yahho.com --destination
+firstperson@gmail.com secondperson@gmail.com --subject 'Hello' --message
+'Hello World'
+</pre>
