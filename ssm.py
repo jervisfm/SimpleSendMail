@@ -8,7 +8,7 @@ import os
 import sys
 import re
 
-DEBUG = False
+DEBUG = True
 
 def quick_validate_email(email):
     """Does a basic check to ensure that email is a well-formed email address.
@@ -111,7 +111,7 @@ def send_email(source, destination, subject, message, sendmail_path='/usr/sbin/s
                 sys.exit(-1)
         
     # Construct the Message Body struct
-    message_template = """
+    message_template = """\
 From: %(source)s
 To: %(destination)s
 Subject: %(subject)s
@@ -123,6 +123,9 @@ Subject: %(subject)s
                         subject=subject,
                         body=message)
     email_message = message_template % message_dict
+
+    if DEBUG:
+        print 'Email Message Being Sent:%s\n' % email_message
 
     # Finally send the email
     sendmail_command = "%s -t -i" % sendmail_path
