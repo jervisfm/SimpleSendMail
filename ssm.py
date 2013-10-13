@@ -5,6 +5,23 @@ __date__ = 'October 2013'
 
 import argparse
 import sys
+import re
+
+def quick_validate_email(email):
+    """Does a basic check to ensure that email is a well-formed email address.
+
+    Args:
+       email: the address to check
+
+    Returns:
+        True if email is probably a conformant email address."""
+
+    # Just follow the basic structure <some.thing>@<somet.hing>.<com>
+    email_regex = "[a-zA-Z0-9_+\.]+@[a-zA-Z0-9.]+.[a-zA-Z0-9.]+"
+    if re.search(email_regex, email): # email matches regex
+        return True
+    else:
+        return False
 
 def process_args():
     """Process and parse the commandline arguments specified. 
@@ -22,10 +39,8 @@ def process_args():
     args = vars(parser.parse_args())
     return args
 
-
 def main():
     process_args()
-
 
 if __name__ == '__main__':
     main()
