@@ -7,6 +7,8 @@ import argparse
 import sys
 import re
 
+DEBUG = False
+
 def quick_validate_email(email):
     """Does a basic check to ensure that email is a well-formed email address.
 
@@ -60,13 +62,15 @@ def process_args():
     parser.add_argument('--subject', default='', help='Subject of the message.')
     parser.add_argument('--message', default='',  help='Main Body of the message.')
     parser.add_argument('--file', default='', help='Read specified text file and use that for the body of the message.') 
-    parser.add_argument('--sendmail-binary', default='/usr/sbin/sendmail', help='Use specified copy of sendmail binary. Defaults to /usr/sbin/sendmail.')
+    parser.add_argument('--sendmail-path', default='/usr/sbin/sendmail', help='User specified copy of sendmail binary. Defaults to /usr/sbin/sendmail.')
     args = vars(parser.parse_args())
 
     # Quit if source/destination email is invalid.
     sanity_check_emails(args['destination'] + [args['source']])
     
-    print args
+    if DEBUG:
+        print args
+
     return args
 
 
@@ -130,7 +134,16 @@ Subject: %(subject)s
         print "Email Successfully Sent."
 
 def main():
-    process_args()
+    args=process_args()
+
+    # Send the email
+    send_email(source=args['source'],
+               destination=args['destination']
+               subject=args['subject']
+               message=args['message']
+               sendmail_path=args['sendmail_path']
+               text_file=args['file'])
+    return 0
 
 if __name__ == '__main__':
     main()
