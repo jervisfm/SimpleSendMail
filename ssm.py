@@ -78,8 +78,29 @@ def send_email(source, destination, subject, message, sendmail_path='/usr/sbin/s
     Returns:
         True upon success. 
     """
-    pass
+    # Check the Arguments
+    if not source:
+        raise ValueError("Source email must be provided")
+    if not destination:
+        raise ValueError("Destination email must be provided")
 
+    if subject is None:
+        subject = ''
+
+    if text_file is not None:
+        # Attempt to read the text_file and use it as the message. 
+        try:
+            with open(text_file, 'r') as f:
+                content = f.read()
+                message = content
+        except IOError:
+            if not message: # No message provided. Inform user and quit.
+                print 'Error: Cannot read from file: %d and no --message parameter provided' % text_file
+                print 'Please either specify a --message value or give a valid file'
+                sys.exit(-1)
+        
+    # Construct the Message Body struct
+    
 
 def main():
     process_args()
