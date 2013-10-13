@@ -53,6 +53,21 @@ def process_args():
     
     return args
 
+def send_email(source, destination, subject, message, text_file=None)
+    """Send an email using the send mail program. 
+
+    Args:
+        source: Source/Sender of the email.
+        destination: Recipient of the email.
+        subject: Subject/Title of the email.
+        message: body content of the email
+        text_file: if given, indicates that body of email should be read from text file.
+
+    Returns:
+        True upon success. 
+    """
+    
+
 def main():
     process_args()
 
