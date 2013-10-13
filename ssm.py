@@ -100,6 +100,20 @@ def send_email(source, destination, subject, message, sendmail_path='/usr/sbin/s
                 sys.exit(-1)
         
     # Construct the Message Body struct
+    message_template = """
+From: %(source)s
+To: %(destination)s
+Subject: %(subject)s
+
+%(body)s
+"""
+    message_dict = dict(source=source,
+                        destination=', '.join(destination) # compile all emails addresses to comma separated list. 
+                        subject=subject,
+                        body=message)
+    email_message = message_template % message_dict
+
+    # Finally send the email
     
 
 def main():
