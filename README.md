@@ -6,11 +6,11 @@ Introduction
 This is a simple python program that aims to provide a simpler interface to sendmail
 for sending textual emails. 
 
-It is primarily designed to run on UNIX system that have the sendmail utility installed. 
+It is pretty handy for sending emails to your self and it is primarily designed to run on UNIX systems that have the sendmail utility installed. 
 
-The primary motivation came from find the sendmail interface too arcane to send a simple email. 
+The primary motivation came from finding the sendmail interface too arcane to send just a simple email. 
 I felt overwhelemd by the sheer number of options which are exposed to the user. This script hides
-all that complexity and presents a simple interface. 
+all that complexity and presents a simple, human friendly interface. 
 
 
 Dependency
