@@ -47,7 +47,14 @@ def process_args():
     Returns:
        A dictionary with given arguments as keys. 
     """
-    parser = argparse.ArgumentParser(description='Simpler Interface to send mail')
+
+    help_epilog = ("Here is an example command:\n"
+                      " python ssm.py --source=me@yahho.com"
+                      " --destination firstperson@gmail.com secondperson@gmail.com"
+                      " --subject 'Hello' "
+                      "--message 'Hello World'") 
+
+    parser = argparse.ArgumentParser(description='Simpler Interface to send mail',epilog=help_epilog)
     parser.add_argument('--source', required=True, help='Source of email')
     parser.add_argument('--destination', nargs='+', required=True, help='Space separated list of destination email addresses to send email to.')
     parser.add_argument('--subject', default='', help='Subject of the message.')
